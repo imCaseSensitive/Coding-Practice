@@ -50,7 +50,7 @@ function topThreeWords(text) {
         })
     }
 
-    return answer
+    return answer.slice(0, 3)
 }
 
 module.exports = { topThreeWords };
