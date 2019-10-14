@@ -15,11 +15,12 @@ function topThreeWords(text) {
     let answer = []
 
     const isAlpha = ch => {
-        return ch.match(/^[a-z']+$/i) !== null;
+        return ch.match(/^[a-z'-]+$/i) !== null;
     }
 
     let wordArray;
     textArray.forEach((word, index) => {
+        word.toLowerCase()
         wordArray = word.split('')
         for (let i = 0; i < wordArray.length; i++) {
             if(!isAlpha(wordArray[i])) {
@@ -28,36 +29,34 @@ function topThreeWords(text) {
             }
         }
         textArray[index] = wordArray.join('')
-    })
-    
-    console.log(textArray, 'after symbol check at each index')
+    })    
     textArray.forEach(word => {
         let current = word.toLowerCase()
-
-        if (!memo[current] && isAlpha(word)) {
+        if (!memo[current] && isAlpha(current)) {
             memo[current] = 1
-        }else if (memo[current] && isAlpha(word)) {
+        }else if (memo[current] && isAlpha(current)) {
             memo[current] += 1
         }
     })
-
-    console.log(memo, 'current word count')
-
     const memoKeys = Object.keys(memo)
 
     memoKeys.forEach(key => {
-        if (answer.length < 1 && isAlpha(key)) {
+        if (answer.length < 1 && isAlpha(key) && key !== "'") {
             answer.push(key)
         } 
-        else if (memo[key] < memo[answer[0]]) {
-            answer.push(key)
-        }
-        else {
+        else if (memo[key] > memo[answer[0]] && key !== "'") {
             answer.unshift(key)
         }
+        else if (memo[key] === memo[answer[0]] && key !== "'") {
+            answer.splice(1, 0, key)
+        }
+        else if (memo[key] < memo[answer[0]] && key !== "'") {
+            answer.push(key)
+        }
     })
-    console.log(answer)
-    return answer
+    console.log(memo)
+
+    return answer.slice(0, 3)
 }
 
 module.exports = { topThreeWords };
