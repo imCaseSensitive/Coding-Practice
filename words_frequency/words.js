@@ -38,25 +38,19 @@ function topThreeWords(text) {
             memo[current] += 1
         }
     })
+    const memoVals = Object.values(memo).sort().reverse().slice(0, 3)
     const memoKeys = Object.keys(memo)
 
-    memoKeys.forEach(key => {
-        if (answer.length < 1 && isAlpha(key) && key !== "'") {
-            answer.push(key)
-        } 
-        else if (memo[key] > memo[answer[0]] && key !== "'") {
-            answer.unshift(key)
-        }
-        else if (memo[key] === memo[answer[0]] && key !== "'") {
-            answer.splice(1, 0, key)
-        }
-        else if (memo[key] < memo[answer[0]] && key !== "'") {
-            answer.push(key)
-        }
-    })
-    console.log(memo)
+    for (let i = 0; i < memoVals.length; i++) {
+        memoKeys.forEach(key => {
+            if (memo[key] === memoVals[i] && key !== "'") {
+                answer.push(key)
+                memo[key] = null
+            }
+        })
+    }
 
-    return answer.slice(0, 3)
+    return answer
 }
 
 module.exports = { topThreeWords };
