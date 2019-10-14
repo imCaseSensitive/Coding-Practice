@@ -25,7 +25,7 @@ describe('word frequency', () => {
         expect(topThreeWords(testCase)).to.deep.equal(["e"])
     })
     it("should return empty array if no letters or words are given", () => {
-        const testCase = "  , e   .. "
+        const testCase = "  ... "
         const testCase2 = "  '  "
 
         expect(topThreeWords(testCase)).to.deep.equal([])
