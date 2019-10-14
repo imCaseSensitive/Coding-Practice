@@ -8,6 +8,32 @@
 
 
 function topThreeWords(text) {
+    let textArray = text.split(" ")
+    let answer = []
+    let memo = {}
+
+    textArray.forEach(word => {
+        let current = word.toLowerCase()
+
+        if (!memo[current]) {
+            memo[current] = 1
+        }else if (memo[current]) {
+            memo[current] += 1
+        }
+    })
+
+    const memoKeys = Object.keys(memo)
+    const isAlpha = ch => {
+        return ch.match(/^[a-z]+$/i) !== null;
+    }
+
+    memoKeys.forEach(key => {
+        if (answer.length < 1 && isAlpha(key)) {
+            answer.push(key)
+        }
+    })
+    console.log(answer)
+    return answer
 }
 
 module.exports = { topThreeWords };
