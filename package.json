@@ -1,0 +1,8 @@
+{
+  "name": "Coding-Practice",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/imCaseSensitive/Coding-Practice.git",
+  "author": "Matt Weidner <mweidner44@gmail.com>",
+  "license": "MIT"
+}
