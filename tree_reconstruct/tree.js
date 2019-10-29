@@ -1,13 +1,20 @@
-function reconstructTree(inOrder,preOrder) {
+function reconstructTree(inOrder, preOrder) {
     let answer = [];
 
-    if (preOrder.length > 0) {
-        answer.push(preOrder[0])
+    const recurse = (index = 0) => {
+
+        if (preOrder.length > 1 && answer.length === 0) {
+            answer.push(preOrder[index])
+        }
+
+        for (let i = 0; i < inOrder.length; i++) {
+
+        }
+
     }
 
-    
 
-    console.log(answer)
+    recurse()
     return answer;
   }
 
