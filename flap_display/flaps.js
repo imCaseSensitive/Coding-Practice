@@ -12,7 +12,7 @@
 const flapDisplay = (lines, rotors) => {
     let answer = []
     // Your code here!
-    return lines
+    return answer
   }
 
 
