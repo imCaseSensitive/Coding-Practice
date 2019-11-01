@@ -10,6 +10,7 @@
 // ...REPEAT this line procedure from top to bottom until the whole display is updated
 
 const flapDisplay = (lines, rotors) => {
+    let answer = []
     // Your code here!
     return lines
   }
